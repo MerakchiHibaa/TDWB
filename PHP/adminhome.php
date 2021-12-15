@@ -305,7 +305,7 @@ $result = mysqli_query($conn,$q) ;
 				
 </form>
 </section> 
-    <a href="#">Déconnexion</a>
+    <a href="index.html">Déconnexion</a>
     </ul>
     </div>
 	</body>

@@ -216,13 +216,7 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
 	opacity: 0.8;
 }
-.add {
-	visibility: hidden;
-	display:none;
-	background-color: #eee;
-	color: red;
 
-}
 
 #paragraph {
 	color: red;
