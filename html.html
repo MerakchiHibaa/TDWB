@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ingenieur</title>
+		<link rel="stylesheet" href="main.css" />
+       
+	</head>
+	<body>
+		<header>
+			<h1>Ingénieurs Agricols</h1>
+			<div class="slider">
+				<img class="slider-img" src="images/agr1.jfif" alt="" />
+				<img class="slider-img" src="images/agr2.jfif" alt="" />
+				<img class="slider-img" src="images/agr3.jfif" alt="" />
+				<img class="slider-img" src="images/agr4.jfif" alt="" />
+			</div>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a class="lien" href="#">Accueil</a>
+				</li>
+				<li>
+					<a class="lien" href="#">Types d'agriculture</a>
+					<div class="links">
+						<ul class="type_agriculture">
+							<li>
+								<a href="#">l'agriculture conventionnelle</a>
+							</li>
+							<li><a href="#">l'agriculture biologique</a></li>
+							<li><a href="#">l'agriculture durable</a></li>
+							<li><a href="#">l'agriculture Raisonnée</a></li>
+							<li><a href="#">l'agriculture Intégrée</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a class="lien" href="#">Contact</a>
+				</li>
+			</ul>
+		</nav>
+		<main>
+			<div class="container">
+				<video autoplay loop muted>
+					<source src="images/agriculture.mp4" />
+				</video>
+			</div>
+			<section>
+				<h2>Statistiques</h2>
+				<div>
+					<figure>
+						<figcaption>Principale production végétales mondiales</figcaption>
+						<table id="table-vgt" class="tableau">
+							<thead>
+								<th scope="col">Culture</th>
+								<th scope="col">Superficie cultivé (1000 ha)</th>
+								<th scope="col">Production totale (1000 tonnes)</th>
+							</thead>
+							<tbody></tbody>
+							<tfoot>
+								<tr id="total-vgt">
+									<th>Total</th>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tfoot>
+						</table>
+					</figure>
+					<figure>
+						<figcaption>Principaux élévages mondiaux</figcaption>
+						<table id="table-anm" class="tableau">
+							<thead>
+								<th scope="col">Espèce</th>
+								<th scope="col">Nombre (1000 tetes)</th>
+							</thead>
+							<tbody></tbody>
+							<tfoot>
+								<tr id="total-anm">
+									<th>Total</th>
+									<td>0</td>
+								</tr>
+							</tfoot>
+						</table>
+					</figure>
+				</div>
+			</section>
+			<section class="add">
+				<h2 class="title">Ajouter une nouvelle ligne</h2>
+				<form class="container">
+					<select name="selectTable" id="selectTable">
+						<option value="vegetables" selected>productions végétales</option>
+						<option value="animals">élévages mondiaux</option>
+					</select>
+					<div class="inputs show vgt">
+						<input id="culture" type="text" placeholder="Culutre" required />
+						<input
+							id="superficie"
+							type="number"
+							placeholder="Superficie cultivé"
+							required
+						/>
+						<input
+							id="total"
+							type="number"
+							placeholder="Production totale"
+							required
+						/>
+					</div>
+					<div class="inputs anm">
+						<input type="text" id="espece" placeholder="Espece" required />
+						<input type="number" id="number" placeholder="Nombre" required />
+					</div>
+					<input id="buttonajouter" type="submit" value="Ajouter"/>
+				</form>
+			</section>
+		</main>
+		<footer>
+			<a href="mailto:engineer@esi.dz">Contact-us</a>
+		</footer>
+        <script  src="jquery.js"></script>
+
+		<script  src="TDWBJQUERY.js"></script>
+	</body>
+</html>

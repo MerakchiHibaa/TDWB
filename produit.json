@@ -1,0 +1,33 @@
+{
+	"animals": [
+		{
+			"name": "Lapin",
+			"number": "1000"
+		},
+		{
+			"name": "Lievre",
+			"number": "154"
+		},
+		{
+			"name": "Poulet",
+			"number": "1200355"
+		}
+	],
+	"vegetables": [
+		{
+			"name": "Blé",
+			"cultive": "24012",
+			"total": "24003"
+		},
+		{
+			"name": "Riz",
+			"cultive": "25012",
+			"total": "3403"
+		},
+		{
+			"name": "Haricot graines",
+			"cultive": "6100",
+			"total": "210"
+		}
+	]
+}

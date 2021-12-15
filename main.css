@@ -1,0 +1,225 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+}
+body {
+	font-family: poppins, Arial, Helvetica, sans-serif;
+}
+header {
+	margin: 0 5%;
+}
+header li a {
+	font-weight: bold;
+}
+header h1 {
+	padding: 1rem 0;
+	text-align: center;
+	font-size: 3rem;
+	font-family: fantasy;
+	font-style: italic;
+}
+header div {
+	text-align: center;
+}
+nav {
+	background-color: #fff;
+	box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+	border-radius: 6px;
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+nav ul {
+	text-align: center;
+}
+nav ul li {
+	display: inline-block;
+}
+nav .lien {
+	display: block;
+	padding: 1.5rem;
+}
+nav ul li a {
+	color: #000;
+}
+nav ul li a:hover {
+	color: green;
+}
+nav > ul > li:nth-child(2) {
+	position: relative;
+	z-index: 100;
+}
+.type_agriculture {
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	background-color: #fff;
+	padding: 1rem 0.8rem;
+	box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+}
+nav > ul > li:nth-child(2):hover .type_agriculture {
+	display: flex;
+}
+.type_agriculture li {
+	padding: 0.5rem;
+}
+.type_agriculture li:not(:last-child) {
+	border-bottom: 1px solid rgb(0 0 0 / 20%);
+}
+.container {
+	text-align: center;
+}
+div video {
+	margin-left: auto;
+	margin-right: auto;
+}
+@media screen and (max-width: 768px) {
+	div video {
+		width: 100%;
+	}
+}
+section {
+	padding: 2rem 0;
+}
+section div {
+	margin-top: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 2rem;
+}
+h2 {
+	font-size: 1.8rem;
+	text-align: center;
+}
+.tableau {
+	border: 2px dotted red;
+	padding: 0.5rem;
+	text-align: center;
+	border-collapse: collapse;
+	text-align: left;
+	background-color: rgb(255 0 0 / 5%);
+}
+.tableau td,
+.tableau th {
+	border: 2px dotted red;
+	padding: 10px;
+}
+.tableau thead tr:first-child,
+.tableau tbody tr th {
+	background-color: #ddd;
+}
+.tableau tbody tr:nth-child(2n + 1) {
+	background-color: rgb(255 0 0 / 20%);
+}
+footer {
+	text-align: center;
+	padding: 1rem 0;
+	background-color: #333;
+}
+footer a {
+	color: #fff;
+	text-decoration: none;
+}
+.container {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+header {
+	position: relative;
+	height: 80vh;
+	overflow: hidden;
+}
+.slider {
+	position: absolute;
+	display: flex;
+	height: 100%;
+	left: 0;
+	animation: sliding 10s ease-in-out alternate;
+	animation-iteration-count: infinite;
+}
+.slider img {
+	width: 100vw;
+	border-right: 1rem solid #000;
+	object-fit: cover;
+}
+.slider:hover {
+	animation-play-state: paused;
+}
+@keyframes sliding {
+	0% {
+		left: 0;
+	}
+	15% {
+		left: 0;
+	}
+	30% {
+		left: -100vw;
+	}
+	45% {
+		left: -100vw;
+	}
+	60% {
+		left: -200vw;
+	}
+	75% {
+		left: -200vw;
+	}
+	90% {
+		left: -300vw;
+	}
+	100% {
+		left: -300vw;
+	}
+}
+.title {
+	margin-top: 3rem;
+	text-align: center;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	margin-top: 3rem;
+}
+form .inputs {
+	display: none;
+	flex-direction: column;
+}
+form .inputs.show {
+	display: flex;
+}
+form .inputs input,
+form select {
+	padding: 0.8rem 1rem;
+	border-radius: 6px;
+	border: 1px solid #25a59a;
+}
+form .inputs input:focus,
+form select {
+	outline: 1px solid #25a59a;
+}
+form input[type="submit"] {
+	padding: 0.8rem 1rem;
+	margin-top: 2rem;
+	width: fit-content;
+	border-radius: 6px;
+	background-color: #25a59a;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+form input[type="submit"]:hover {
+	opacity: 0.8;
+}
+.add {
+	visibility: hidden;
+	display:none;
+	background-color: #eee;
+	color: red;
+
+}
