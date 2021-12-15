@@ -223,3 +223,9 @@ form input[type="submit"]:hover {
 	color: red;
 
 }
+
+#paragraph {
+	color: red;
+	padding: 1rem;
+	margin: 5px;
+}

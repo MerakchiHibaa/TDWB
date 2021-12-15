@@ -1,4 +1,29 @@
+function ajoutphp(e) {
+  document.querySelector('.add').setAttribute(display, "block") ; 
+  document.querySelector('.delete').setAttribute(display, "none") ; 
+  document.querySelector('.update').setAttribute(display, "none") ; 
+
+
+ }
+
+ function deletephp(e) {
+  document.querySelector('.delete').style.display = "unset" ; 
+  document.querySelector('.add').setAttribute(display, "none") ; 
+  document.querySelector('.update').setAttribute(display, "none") ; 
+
+ }
+ function updatephp(e) {
+  document.querySelector('.update').setAttribute(display, "block") ; 
+  document.querySelector('.add').setAttribute(display, "none") ; 
+  document.querySelector('.delete').setAttribute(display, "none") ; 
+
+ }
+
+
+
+
 function ajouterLigne(input){
+
   if(input.id == 'tab1') {
       
      //setTimeout(() => {
@@ -7,7 +32,7 @@ function ajouterLigne(input){
 
           
    //   }, 0);
-      
+   
       let object1 = document.getElementById('tab1') ;
       object1.onclick(click1(input)) ;
 

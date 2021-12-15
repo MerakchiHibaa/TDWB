@@ -3,40 +3,23 @@
   session_start();
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
   if(!isset($_SESSION["username"])){
-	if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["culture"] ,  $_POSTT['superficie'], $_POST['totalprod'])) {
-		$culture = stripslashes($_POST['username']);
-		$culture = mysqli_real_escape_string($conn, $username); 
+    header("Location: login.php");
+    exit(); 
+  }
 
-		$superficie = stripslashes($_POST['superficie']);
-		$superficie = mysqli_real_escape_string($conn, $superficie);
-
-		$totalprod = stripslashes($_POST['totalprod']);
-		$totalprod = mysqli_real_escape_string($conn, $totalprod);
-	
-	
-	  $query = "INSERT into `culture` (Nom_culture, Superficie, Production)
-	  VALUES ('$culture', '$superficie', '$totalprod')";
-		$res = mysqli_query($conn, $query);
-		if($res) {
-			echo("la culture est bien insérée") ;
-		}
-		header("Location: login.php");
-		exit(); 
-  
-   }
-}
  
   ?>
 <html>
   <head>
   <link rel="stylesheet" href="../main.css" />
 
+
   
   </head>
   <body>
     <div class="sucess">
-    <h1>Bienvenue <?php echo $_SESSION['username']; ?>!</h1>
-    <p>C'est votre espace admin.</p>
+    <h1 style="text-align: center ;">Bienvenue <?php echo $_SESSION['username']; ?>!</h1>
+    <p style="text-align: center ;">C'est votre espace admin.</p>
     <nav>
 			<ul>
 				<li>
@@ -63,14 +46,16 @@
 		</nav>
 		<main>
 			<div class="container">
-				<video autoplay loop muted>
-					<source src="images/agriculture.mp4" />
-				</video>
+				<!-- <video autoplay loop muted>
+					<source src="../images/agriculture.mp4" />
+				</video> -->
+				
+
 			</div>
 			<section>
 				<h2>Statistiques</h2>
 				<div>
-					<figure>
+					 <!--< figure>
 						<figcaption>Principale production végétales mondiales</figcaption>
 						<table id="table-vgt" class="tableau">
 							<thead>
@@ -79,7 +64,7 @@
 								<th scope="col">Production totale (1000 tonnes)</th>
 							</thead>
 							<tbody></tbody>
-							<tfoot>
+						<tfoot>
 								<tr id="total-vgt">
 									<th>Total</th>
 									<td>0</td>
@@ -103,16 +88,101 @@
 								</tr>
 							</tfoot>
 						</table>
-					</figure>
+					</figure>  -->
+					<?php
+					 include_once("connection.php");
+
+    $q = "SELECT * FROM elevage";
+    echo "<table id='table-anm' class='tableau'>
+<thead>
+  <th scope='col'>Espèce</th>
+  <th scope='col'>Nombre (1000 tetes)</th>
+</thead>";
+$result = mysqli_query($conn,$q) ;
+    foreach ($result as $row) {
+      echo "<tr>
+							<th>" . $row["Nom_animal"] . "</th>
+							<td>" . $row["Nombre_tete"] . "</td>
+              
+						</tr>";
+    }
+    echo "</table>";
+
+    $q = "SELECT * FROM culture";
+    echo "<table id='table-vgt' class='tableau'>
+<thead>
+<th scope='col'>Superficie cultivé (1000 ha)</th>
+<th scope='col'>Culture</th>
+<th scope='col'>Production totale (1000 tonnes)</th>
+</thead>";
+$result = mysqli_query($conn,$q) ;
+    foreach ($result as $row) {
+      echo "<tr>
+							<th>" .  $row["Nom_culture"] . "</th>
+							<td>" . $row["Superficie"] . "</td>
+							<td>" . $row["Production"]  . "</td>
+							
+						</tr>";
+    }
+    echo "</table>"; 
+					  ?>
+	
 				</div>
+
+
+				<div  style="align:right ; justify-content: space-evenly ;"> 
+<style>
+	.buttons {
+	padding: 0.8rem 1rem;
+	margin-top: 2rem;
+	width: fit-content;
+	border-radius: 6px;
+	background-color: #25a59a;
+	border: none;
+	color: #fff;
+	cursor: pointer;"
+	}
+
+ </style>
+ <script>
+	function ajoutphp(e) {
+  document.getElementById('secadd').style.display = (e.onclick? 'block':'none');
+  document.getElementById('secdel').style.display = "none" ; 
+  document.getElementById('secup').style.display = "none" ; 
+
+
+ }
+
+ function deletephp(e) {
+  document.getElementById('secdel').style.display = "block" ; 
+  document.getElementById('secadd').style.display = "none" ; 
+  document.getElementById('secup').style.display= "none" ; 
+
+ }
+ function updatephp(e) {
+  document.getElementById('secup').style.display ="block" ; 
+  document.getElementById('secadd').style.display ="none" ; 
+  document.getElementById('secdel').style.display ="none" ; 
+
+ }
+
+ 
+ </script>
+
+					<input onclick="deletephp(this)" id="delphp" class="buttons" value="Supprimer" type="button" >				
+					<input  onclick="updatephp(this)" id="upphp" class="buttons" value="Modifier" type="button">			
+	
+					<input   onclick="ajoutphp(this)" id="ajtphp" class="buttons" value="Ajouter" type="button">			
+				
+</div>
 			</section>
-			<section class="add">
+			<section id="secadd" class="add" style="display: none;">
 				<h2 class="title">Ajouter une nouvelle ligne</h2>
 				<form action="ajouter.php" class="container" method="POST">
-					<select name="selectTable" id="selectTable">
+					<!-- <select name="selectTable" id="selectTable">
 						<option value="vegetables" selected>productions végétales</option>
 						<option value="animals">élévages mondiaux</option>
-					</select>
+					</select> -->
 					<div class="inputs show vgt">
 						<input name="culture" id="culture" type="text" placeholder="Culutre" required />
 						<input name="superficie"
@@ -149,15 +219,15 @@
 <!-------------------------------------------------->
 
 
-<section class="delete">
+<section id="secdel" class="delete" style ="display: none ; ">
 				<h2 class="title">Supprimer un produit</h2>
 			 
 
 				<form action="delete.php" class="container" method="POST">
-					<select name="selectTable" id="selectTable">
+					<!-- <select name="selectTable" id="selectTable">
 						<option value="vegetables" selected>productions végétales</option>
 						<option value="animals">élévages mondiaux</option>
-					</select>
+					</select> -->
 					<div class="inputs show vgt">
 						<input name="culturedel" id="culture" type="text" placeholder="Culutre" required />
 						<!-- <input name="superficiedel"
@@ -195,15 +265,15 @@
 <!-------------------------------------------------->
 
 
-<section class="update">
+<section id="secup" class="update" style="display: none ;">
 				<h2 class="title">Modifier un produit</h2>
-								<p > si le produit n'existe pas, il sera ajouté à la table des produits</p>
+								<p style=" padding: 1rem ; margin: 10px ; text-align: center ;" > si le produit n'existe pas, il sera ajouté à la table des produits</p>
 
 				<form action="update.php" class="container" method="POST">
-					<select name="selectTable" id="selectTable">
+					<!-- <select name="selectTable" id="selectTable">
 						<option value="vegetables" selected>productions végétales</option>
 						<option value="animals">élévages mondiaux</option>
-					</select>
+					</select> -->
 					<div class="inputs show vgt">
 						<input name="cultureup" id="culture" type="text" placeholder="Culutre" required />
 						<input name="superficieup"
@@ -239,6 +309,9 @@
     </ul>
     </div>
 	</body>
+	
+	<script src="../jquery.js"> </script>
+
 
 
 </html>
